@@ -6,9 +6,15 @@ import datetime
 
 def email_notification():
     appointments = Appointment.objects.all()
-    date = datetime.now()
+    # date = datetime.now()
+    print(type(appointments))
     for app in appointments:
-        # print(app.created_by)
+        print(app.created_by)
+        print(app.appointment_time)
+        # user = User.objects.get(username =app.created_by )
+        # print(user.email)
+        # return 1
+                # print(app.created_by)
 #         user = User.objects.get(username =app.created_by )
 #         print(user.email)
 #         print(appointments['appointment_time'])
