@@ -5,16 +5,28 @@ from django.contrib.auth.models import User
 import datetime
 
 def email_notification():
+    # get all the appointments queryset to llop over 
     appointments = Appointment.objects.all()
+    # get the time noe each time we run the job
     date = datetime.datetime.now()
-    print(date)
-    for app in appointments.iterator():
-        # print(app.created_by)
-        # print(type(app.appointment_time))
-        # user = User.objects.get(username =app.created_by )
-        # print(user.email)
+   
 
-        pass
+    for app in appointments.iterator():
+        # get appointment time to check with the current time
+        app_date = app.appointment_time
+
+        # get the user and the user email for each appointment  
+        user = User.objects.get(username =app.created_by )
+
+        if date.day == (app_date.day + 1) and (date.hour - app_date.hour) == 0:
+            pass
+        if date.day == app_date.day and (date.hour - app_date.hour) == 6:
+            pass
+        if date.day == app_date.day and (date.hour - app_date.hour) == 0:
+            pass
+
+
+
         # for app in appointments.iterator():
         #     print(app.status)
         # user = User.objects.get(username =app.created_by )
